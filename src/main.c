@@ -11,11 +11,14 @@
 
 #include "interface.h"
 #include "support.h"
+#include "callbacks.h"
 
 int
 main (int argc, char *argv[])
 {
-
+  GtkWidget *Ajout;
+  GtkWidget *Reservation;
+	GtkWidget *Chercher;
 #ifdef ENABLE_NLS
   bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
   bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -32,8 +35,14 @@ main (int argc, char *argv[])
    * (except popup menus), just so that you see something after building
    * the project. Delete any components that you don't want shown initially.
    */
+  Ajout = create_ajout ();
+  gtk_widget_show (Ajout);
+  
+  Reservation = create_reservation ();
+  gtk_widget_show (Reservation);
 
+  Chercher = create_recherche();
+  gtk_widget_show (Chercher);
   gtk_main ();
   return 0;
 }
-

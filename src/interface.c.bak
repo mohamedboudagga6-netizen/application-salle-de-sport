@@ -887,6 +887,8 @@ create_modification (void)
   GtkWidget *vbox20;
   GtkWidget *vbox21;
   GtkWidget *label41;
+  GtkWidget *scrolledwindow1;
+  GtkWidget *smodiftreeview;
   GtkWidget *vbox22;
   GtkWidget *vbox23;
   GtkWidget *hbox47;
@@ -947,11 +949,11 @@ create_modification (void)
   GtkWidget *image9;
   GtkWidget *label65;
   GtkWidget *label66;
-  GtkWidget *button19;
-  GtkWidget *alignment18;
-  GtkWidget *hbox99;
-  GtkWidget *image18;
-  GtkWidget *label101;
+  GtkWidget *smodifbuttonEnregistrer;
+  GtkWidget *alignment11;
+  GtkWidget *hbox65;
+  GtkWidget *image10;
+  GtkWidget *label67;
   GtkWidget *label68;
   GtkWidget *smodifbuttonQuitter;
   GtkWidget *alignment12;
@@ -995,6 +997,15 @@ create_modification (void)
   gtk_widget_show (label41);
   gtk_box_pack_start (GTK_BOX (vbox21), label41, FALSE, FALSE, 0);
   gtk_label_set_use_markup (GTK_LABEL (label41), TRUE);
+
+  scrolledwindow1 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow1);
+  gtk_box_pack_start (GTK_BOX (vbox20), scrolledwindow1, TRUE, TRUE, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow1), GTK_SHADOW_IN);
+
+  smodiftreeview = gtk_tree_view_new ();
+  gtk_widget_show (smodiftreeview);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow1), smodiftreeview);
 
   vbox22 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox22);
@@ -1242,25 +1253,25 @@ create_modification (void)
   gtk_widget_show (label66);
   gtk_box_pack_start (GTK_BOX (hbox63), label66, TRUE, TRUE, 0);
 
-  button19 = gtk_button_new ();
-  gtk_widget_show (button19);
-  gtk_box_pack_start (GTK_BOX (hbox63), button19, TRUE, TRUE, 6);
+  smodifbuttonEnregistrer = gtk_button_new ();
+  gtk_widget_show (smodifbuttonEnregistrer);
+  gtk_box_pack_start (GTK_BOX (hbox63), smodifbuttonEnregistrer, TRUE, TRUE, 6);
 
-  alignment18 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment18);
-  gtk_container_add (GTK_CONTAINER (button19), alignment18);
+  alignment11 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment11);
+  gtk_container_add (GTK_CONTAINER (smodifbuttonEnregistrer), alignment11);
 
-  hbox99 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox99);
-  gtk_container_add (GTK_CONTAINER (alignment18), hbox99);
+  hbox65 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox65);
+  gtk_container_add (GTK_CONTAINER (alignment11), hbox65);
 
-  image18 = gtk_image_new_from_stock ("gtk-save", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image18);
-  gtk_box_pack_start (GTK_BOX (hbox99), image18, FALSE, FALSE, 0);
+  image10 = gtk_image_new_from_stock ("gtk-save", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image10);
+  gtk_box_pack_start (GTK_BOX (hbox65), image10, FALSE, FALSE, 0);
 
-  label101 = gtk_label_new_with_mnemonic (_("Enregistrer"));
-  gtk_widget_show (label101);
-  gtk_box_pack_start (GTK_BOX (hbox99), label101, FALSE, FALSE, 0);
+  label67 = gtk_label_new_with_mnemonic (_("Enregistrer"));
+  gtk_widget_show (label67);
+  gtk_box_pack_start (GTK_BOX (hbox65), label67, FALSE, FALSE, 0);
 
   label68 = gtk_label_new ("");
   gtk_widget_show (label68);
@@ -1293,8 +1304,8 @@ create_modification (void)
   g_signal_connect ((gpointer) smodifbuttonPrecedent, "clicked",
                     G_CALLBACK (on_smodifbuttonPrecedent_clicked),
                     NULL);
-  g_signal_connect ((gpointer) button19, "clicked",
-                    G_CALLBACK (on_smodifbuttonEnregistrer_clicked),
+  g_signal_connect ((gpointer) smodifbuttonEnregistrer, "clicked",
+                    G_CALLBACK (on_buttonEnregistrer_clicked),
                     NULL);
   g_signal_connect ((gpointer) smodifbuttonQuitter, "clicked",
                     G_CALLBACK (on_smodifbuttonQuitter_clicked),
@@ -1310,6 +1321,8 @@ create_modification (void)
   GLADE_HOOKUP_OBJECT (modification, vbox20, "vbox20");
   GLADE_HOOKUP_OBJECT (modification, vbox21, "vbox21");
   GLADE_HOOKUP_OBJECT (modification, label41, "label41");
+  GLADE_HOOKUP_OBJECT (modification, scrolledwindow1, "scrolledwindow1");
+  GLADE_HOOKUP_OBJECT (modification, smodiftreeview, "smodiftreeview");
   GLADE_HOOKUP_OBJECT (modification, vbox22, "vbox22");
   GLADE_HOOKUP_OBJECT (modification, vbox23, "vbox23");
   GLADE_HOOKUP_OBJECT (modification, hbox47, "hbox47");
@@ -1366,11 +1379,11 @@ create_modification (void)
   GLADE_HOOKUP_OBJECT (modification, image9, "image9");
   GLADE_HOOKUP_OBJECT (modification, label65, "label65");
   GLADE_HOOKUP_OBJECT (modification, label66, "label66");
-  GLADE_HOOKUP_OBJECT (modification, button19, "button19");
-  GLADE_HOOKUP_OBJECT (modification, alignment18, "alignment18");
-  GLADE_HOOKUP_OBJECT (modification, hbox99, "hbox99");
-  GLADE_HOOKUP_OBJECT (modification, image18, "image18");
-  GLADE_HOOKUP_OBJECT (modification, label101, "label101");
+  GLADE_HOOKUP_OBJECT (modification, smodifbuttonEnregistrer, "smodifbuttonEnregistrer");
+  GLADE_HOOKUP_OBJECT (modification, alignment11, "alignment11");
+  GLADE_HOOKUP_OBJECT (modification, hbox65, "hbox65");
+  GLADE_HOOKUP_OBJECT (modification, image10, "image10");
+  GLADE_HOOKUP_OBJECT (modification, label67, "label67");
   GLADE_HOOKUP_OBJECT (modification, label68, "label68");
   GLADE_HOOKUP_OBJECT (modification, smodifbuttonQuitter, "smodifbuttonQuitter");
   GLADE_HOOKUP_OBJECT (modification, alignment12, "alignment12");
@@ -1761,7 +1774,7 @@ create_recherche (void)
   GLADE_HOOKUP_OBJECT (recherche, image17, "image17");
   GLADE_HOOKUP_OBJECT (recherche, label99, "label99");
   GLADE_HOOKUP_OBJECT (recherche, label100, "label100");
-
+  GLADE_HOOKUP_OBJECT (recherche, label100, "label100");
 
   // Setup treeview and load data
   setup_treeview_columns(schertreeviewChercher);
